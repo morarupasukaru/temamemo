@@ -4,6 +4,13 @@ flashcard educational application (2019 - status: concept in refine)
 ## goals
 * sandbox project to use Angular, SpringBoot & HyperSQL
 
+## difficulty / estimation
+* should be manageable (depending of the scope)
+
+## interests
+* for work: major, typical single page application
+* for me: major
+
 ## features
 * end-user learn topics with [flashcards](https://en.wikipedia.org/wiki/Flashcard)
 * end-user can read a dedicated topic page (if available; e.g a markdown page)
@@ -34,3 +41,6 @@ flashcard educational application (2019 - status: concept in refine)
   * flashcard with bitmap image
   * flashcard with vectorial image
   * offline mode
+  
+ ## questions
+ * find a good typical topic (with "free" data)
