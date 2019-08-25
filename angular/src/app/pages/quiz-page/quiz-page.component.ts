@@ -7,9 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizPageComponent implements OnInit {
 
+  question: string;
+  answer: string;
+  answerDisplayed = false;
+
   constructor() { }
 
   ngOnInit() {
+    this.initData();
   }
 
+  initData() {
+    this.question = "Some quick example text to build on the card title and make up the bulk of the card's content.";
+    this.answer = "Answer: " + this.question;
+    this.answerDisplayed = false;
+  }
+
+  displayAnswer() {
+    this.answerDisplayed = true;
+  }
+
+  skipQuestion() {
+    this.initData();
+  }
+
+  ok() {
+    this.initData();
+  }
+
+  ko() {
+    this.initData();
+  }
 }
