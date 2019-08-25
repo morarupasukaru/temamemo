@@ -1,1 +1,30 @@
-<p>home-page works!</p>
+<div class="container text-center mt-2">
+  <div class="jumbotron">
+    <h1 class="display-4">temamemo</h1>
+    <small class="text-muted">
+      <p class="lead"><i class="fas fa-quote-left"></i>&nbsp;thèmes à mémoriser&nbsp;<i class="fas fa-quote-right"></i>
+      </p>
+    </small>
+  </div>
+
+  <div *ngIf="studyStarted" class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+        <app-study-level></app-study-level>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div class="row" [ngClass]="{'mt-3': studyStarted}">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <a href="/question.html"
+        class="btn btn-primary btn-lg btn-block">{{ studyStarted ? 'Continue study!': 'Start study!' }}</a>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
