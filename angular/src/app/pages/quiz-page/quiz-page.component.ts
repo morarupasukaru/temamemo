@@ -3,6 +3,7 @@ import { QuizService } from '../../services/quiz-service';
 import { Flashcard } from '../../models/flashcard';
 import { Router } from '@angular/router';
 import { QuizState } from './quiz-state';
+import { StudyLevelService } from 'src/app/widgets/study-level/study-level.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -16,7 +17,7 @@ export class QuizPageComponent implements OnInit {
   count = 0;
   quizStates: QuizState[];
 
-  constructor(private quizService: QuizService, private router: Router) { }
+  constructor(private quizService: QuizService, private studyLevelService: StudyLevelService, private router: Router) { }
 
   ngOnInit() {
     this.showQuestion();
@@ -35,6 +36,7 @@ export class QuizPageComponent implements OnInit {
   ok() {
     this.quizService.ok();
     this.quizService.nextQuestion();
+    this.studyLevelService.increaseXp();
     this.showQuestion();
   }
 

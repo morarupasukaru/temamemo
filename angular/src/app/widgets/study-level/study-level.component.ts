@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudyLevelService } from './study-level.service';
 
 @Component({
   selector: 'app-study-level',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyLevelComponent implements OnInit {
 
-  constructor() { }
+  level = 1;
+  progress = 0;
+
+  constructor(private studyLevelService: StudyLevelService) { }
 
   ngOnInit() {
+    this.level = this.studyLevelService.studyLevel.level;
+    this.progress = this.studyLevelService.studyLevel.progress;
   }
 }
