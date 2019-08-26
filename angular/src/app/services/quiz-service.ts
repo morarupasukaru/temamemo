@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Flashcard } from '../models/flashcard';
 import { FlashcardService } from './flashcard-service';
+import { FlashcardStudyHistory } from '../models/flashcard-study-history';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,12 @@ export class QuizServiceService {
   getQuiz(): Flashcard[] {
     const flashcards = this.flashcardService.getFlashcards();
     this.shuffle(flashcards);
+    flashcards.forEach(flashcard => {
+      flashcard.studyHistory = new FlashcardStudyHistory();
+      flashcard.studyHistory.ok();
+      flashcard.studyHistory.ok();
+      flashcard.studyHistory.ok();
+    });
     return flashcards;
   }
 
