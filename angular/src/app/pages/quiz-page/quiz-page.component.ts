@@ -28,6 +28,8 @@ export class QuizPageComponent implements OnInit {
 
   skipQuestion() {
     this.answerDisplayed = false;
+    this.quizService.nextQuestion();
+    this.showQuestion();
   }
 
   ok() {

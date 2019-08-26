@@ -5,6 +5,9 @@ import { StudyLevel } from '../../models/study-level';
   providedIn: 'root'
 })
 export class StudyLevelService {
+
+  // TODO observable
+
   getStudyLevel(): StudyLevel {
     return null;
   }

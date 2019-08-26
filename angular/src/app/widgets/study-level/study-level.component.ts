@@ -11,5 +11,4 @@ export class StudyLevelComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
