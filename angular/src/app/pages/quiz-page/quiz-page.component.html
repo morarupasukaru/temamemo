@@ -11,7 +11,6 @@
     </div>
   </div>
 
-
   <div class="row mt-2">
     <div class="col-12">
       <div class="card">
@@ -19,16 +18,22 @@
           <h5 class="card-title">Question {{ count }}
             <span *ngFor="let state of quizStates">
               <span [ngSwitch]="state">
-                <!-- TODO -->
-                <span *ngSwitchCase="'New'" style="color: blue" title="new question"><i class="far fa-lightbulb"></i></span>
-                <span *ngSwitchCase="'Difficult'" style="color: #ff4d4d" title="difficult question"><i class="fas fa-pepper-hot"></i></span>
-                <span *ngSwitchCase="'Ok'" style="color: #28a745" title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i class="fas fa-check"></i></span>
-                <span *ngSwitchCase="'DoubleOk'" style="color: #28a745" title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i class="fas fa-check-double"></i></span>
-                <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i class="fas fa-arrow-right"></i><i style="color: #FFD700" class="fas fa-trophy"></i></span>
+                <span *ngSwitchCase="'New'" style="color: blue" title="new question"><i
+                    class="far fa-lightbulb"></i></span>
+                <span *ngSwitchCase="'Difficult'" style="color: #ff4d4d" title="difficult question"><i
+                    class="fas fa-pepper-hot"></i></span>
+                <span *ngSwitchCase="'Ok'" style="color: #28a745"
+                  title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i
+                    class="fas fa-check"></i></span>
+                <span *ngSwitchCase="'DoubleOk'" style="color: #28a745"
+                  title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i
+                    class="fas fa-check-double"></i></span>
+                <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i
+                    class="fas fa-arrow-right"></i><i style="color: #FFD700" class="fas fa-trophy"></i></span>
               </span>
             </span>
           </h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ currentFlashcard.topic }}</h6>
+          <h6 *ngIf="currentFlashcard.topic" class="card-subtitle mb-2 text-muted">{{ currentFlashcard.topic }}</h6>
           <p class="card-text">{{ currentFlashcard.question }}</p>
         </div>
       </div>
@@ -80,5 +85,4 @@
     <div class="col-sm">
     </div>
   </div>
-
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizServiceService } from '../../services/quiz-service';
+import { QuizService } from '../../services/quiz-service';
 import { Flashcard } from '../../models/flashcard';
 import { Router } from '@angular/router';
 import { QuizState } from './quiz-state';
@@ -11,20 +11,14 @@ import { QuizState } from './quiz-state';
 })
 export class QuizPageComponent implements OnInit {
 
-  question: string;
-  answer: string;
   answerDisplayed = false;
-  flashcards: Flashcard[];
-  indexCurrentFlashcard: number;
   currentFlashcard: Flashcard;
   count = 0;
   quizStates: QuizState[];
 
-  constructor(private quizServiceService: QuizServiceService, private router: Router) { }
+  constructor(private quizService: QuizService, private router: Router) { }
 
   ngOnInit() {
-    this.flashcards = this.quizServiceService.getQuiz();
-    this.indexCurrentFlashcard = 0;
     this.showQuestion();
   }
 
@@ -37,18 +31,23 @@ export class QuizPageComponent implements OnInit {
   }
 
   ok() {
+    this.quizService.ok();
+    this.quizService.nextQuestion();
     this.showQuestion();
   }
 
   ko() {
+    this.quizService.ko();
+    this.quizService.nextQuestion();
     this.showQuestion();
   }
 
   showQuestion() {
-    if (this.indexCurrentFlashcard === this.flashcards.length) {
+    const question = this.quizService.getCurrentQuestion();
+    if (question === null) {
       this.router.navigate(['']);
     } else {
-      this.currentFlashcard = this.flashcards[this.indexCurrentFlashcard++];
+      this.currentFlashcard = question;
       this.count++;
       this.answerDisplayed = false;
     }

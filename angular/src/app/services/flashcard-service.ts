@@ -12,12 +12,12 @@ export class FlashcardService {
   getFlashcards(): Flashcard[] {
     // TODO retrieve from http
     let flashcards = [
-      { question: 'What is the capital of Austria ?', answer: 'Vienna', topic: 'Capitals' },
-      { question: 'What is the capital of France ?', answer: 'Paris', topic: 'Capitals'  },
-      { question: 'What is the capital of Germany ?', answer: 'Berlin', topic: 'Capitals'  },
-      { question: 'What is the capital of Italy ?', answer: 'Rome', topic: 'Capitals'  },
-      { question: 'What is the capital of Luxembourg ?', answer: 'Luxembourg', topic: 'Capitals'  },
-      { question: 'What is the capital of Switzerland ?', answer: 'Bern', topic: 'Capitals'  },
+      { question: 'What is the capital of Austria ?', answer: 'Vienna', topic: 'Capital' },
+      { question: 'What is the capital of France ?', answer: 'Paris', topic: 'Capital'  },
+      { question: 'What is the capital of Germany ?', answer: 'Berlin', topic: 'Capital'  },
+      { question: 'What is the capital of Italy ?', answer: 'Rome', topic: 'Capital'  },
+      { question: 'What is the capital of Luxembourg ?', answer: 'Luxembourg', topic: 'Capital'  },
+      { question: 'What is the capital of Switzerland ?', answer: 'Bern', topic: 'Capital'  },
       { question: '1 X 2 ?', answer: '2', topic: 'Multiplication table' },
       { question: '2 X 2 ?', answer: '4', topic: 'Multiplication table' },
       { question: '3 X 2 ?', answer: '6', topic: 'Multiplication table' },

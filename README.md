@@ -4,6 +4,12 @@ flashcard educational application (2019 - status: concept in refine)
 ## goals
 * sandbox project to use Angular, SpringBoot & HyperSQL
 
+## TODO
+credits
+https://game-icons.net/about.html
+https://game-icons.net/1x1/delapouite/files.html
+TODO remaining cards to learn
+
 ## difficulty / estimation
 * should be manageable (depending of the scope)
 
