@@ -16,8 +16,13 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Question</h5>
-          <p class="card-text">{{ question }}</p>
+          <h5 class="card-title">Question {{ count }} -
+            <span style="color: lightblue">"new"</span>
+            <span style="color: lightsalmon">hard!</span>
+            <span style="color: #28a745">2xOK</span>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ currentFlashcard.topic }}</h6>
+          <p class="card-text">{{ currentFlashcard.question }}</p>
         </div>
       </div>
     </div>
@@ -28,7 +33,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Answer</h5>
-          <p *ngIf="answerDisplayed" class="card-text">{{ answer }}</p>
+          <p *ngIf="answerDisplayed" class="card-text">{{ currentFlashcard.answer }}</p>
           <div *ngIf="!answerDisplayed" class="row">
             <div class="col-sm">
             </div>
@@ -43,7 +48,7 @@
     </div>
   </div>
 
-  <div *ngIf="!answerDisplayed"class="row mt-1">
+  <div *ngIf="!answerDisplayed" class="row mt-1">
     <div class="col-sm">
     </div>
     <div class="col-sm-4 mt-2">

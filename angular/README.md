@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Credits
 https://game-icons.net/about.html
 https://game-icons.net/1x1/delapouite/files.html
+TODO counter advance
 
 ## Development server
 
