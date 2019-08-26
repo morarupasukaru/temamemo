@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StudyLevel } from '../../models/study-level';
-import { Flashcard } from 'src/app/models/flashcard';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,10 @@ import { Flashcard } from 'src/app/models/flashcard';
 export class StudyLevelService {
 
   studyLevel: StudyLevel = new StudyLevel();
+  studyLevelSubject = new Subject<StudyLevel>();
 
   increaseXp() {
     this.studyLevel.increaseXp();
+    this.studyLevelSubject.next(this.studyLevel);
   }
 }

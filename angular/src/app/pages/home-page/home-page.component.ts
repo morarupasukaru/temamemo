@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  studyStarted: boolean;
+  studyStarted = false;
 
   constructor(private studyLevelService: StudyLevelService, private router: Router) { }
 
