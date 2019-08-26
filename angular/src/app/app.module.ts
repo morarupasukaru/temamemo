@@ -7,6 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { QuizPageComponent } from './pages/quiz-page/quiz-page.component';
 import { StudyLevelComponent } from './widgets/study-level/study-level.component';
 import { StopwatchComponent } from './widgets/stopwatch/stopwatch.component';
+import { QuizProgressComponent } from './widgets/quiz-progress/quiz-progress.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { StopwatchComponent } from './widgets/stopwatch/stopwatch.component';
     HomePageComponent,
     QuizPageComponent,
     StudyLevelComponent,
-    StopwatchComponent
+    StopwatchComponent,
+    QuizProgressComponent
   ],
   imports: [
     BrowserModule,
