@@ -60,6 +60,7 @@ v0.0.2
 v0.0.2
 * small ui improvements
 * add flashcard with more advanced data (e.g. image)
+* refactor components
 
 v0.0.1
 * basic prototype of the flashcard application
