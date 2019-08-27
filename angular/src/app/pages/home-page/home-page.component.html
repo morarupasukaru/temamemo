@@ -16,14 +16,24 @@
   </div>
 
   <div *ngIf="studyStarted" class="row">
-    <div class="col-sm">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm-6">
+        <app-study-level></app-study-level>
+      </div>
+      <div class="col-sm">
+      </div>
     </div>
-    <div class="col-sm-6">
-      <app-study-level></app-study-level>
-    </div>
-    <div class="col-sm">
-    </div>
-  </div>
+
+    <div *ngIf="studyStarted" class="row mt-1">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm-6">
+          <app-quiz-progress></app-quiz-progress>
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
 
   <div class="row" [ngClass]="{'mt-3': studyStarted}">
     <div class="col-sm">
