@@ -10,12 +10,9 @@ credits
     https://game-icons.net/1x1/delapouite/files.html
 
 v0.0.2
-- question / answer with acccordion (smaller)
-    https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example
 - multimedia
     https://getbootstrap.com/docs/4.3/components/card/
-
-- white text for button without href
+- bug white text for button without href
 
 ## difficulty / estimation
 * should be manageable (depending of the scope)
@@ -61,7 +58,7 @@ v0.0.2
 ## Releases
 
 v0.0.2
-* smaller ui improvements
+* small ui improvements
 * add flashcard with more advanced data (e.g. image)
 
 v0.0.1
