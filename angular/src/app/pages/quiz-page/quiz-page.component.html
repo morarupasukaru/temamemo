@@ -30,6 +30,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Question {{ count }}
+            <!-- TODO custom component -->
             <span *ngFor="let state of quizStates">
               <span [ngSwitch]="state">
                 <span *ngSwitchCase="'New'" style="color: blue" title="new question"><i
@@ -58,8 +59,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Answer</h5>
-          <p *ngIf="answerDisplayed" class="card-text">{{ currentFlashcard.answer }}</p>
+          <div *ngIf="answerDisplayed">
+            <h5 class="card-title">Answer</h5>
+            <p class="card-text">{{ currentFlashcard.answer }}</p>
+          </div>
           <div *ngIf="!answerDisplayed" class="row">
             <div class="col-sm">
             </div>

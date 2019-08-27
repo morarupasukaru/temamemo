@@ -15,6 +15,8 @@ v0.0.2
 - multimedia
     https://getbootstrap.com/docs/4.3/components/card/
 
+- white text for button without href
+
 ## difficulty / estimation
 * should be manageable (depending of the scope)
 
