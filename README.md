@@ -6,9 +6,19 @@ flashcard educational application (2019 - status: concept in refine)
 
 ## TODO
 credits
-https://game-icons.net/about.html
-https://game-icons.net/1x1/delapouite/files.html
-TODO remaining cards to learn
+    https://game-icons.net/about.html
+    https://game-icons.net/1x1/delapouite/files.html
+
+v0.0.2
+- nothing to learn screen / feedback (please choose another topics or wait)
+- congratulation at the end of the study
+    https://getbootstrap.com/docs/4.3/components/modal/
+- popovers > alternative to tooltip
+    https://getbootstrap.com/docs/4.3/components/popovers/
+- question / answer with acccordion (smaller)
+    https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example
+- multimedia
+    https://getbootstrap.com/docs/4.3/components/card/
 
 ## difficulty / estimation
 * should be manageable (depending of the scope)
