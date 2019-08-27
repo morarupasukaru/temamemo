@@ -55,3 +55,12 @@ v0.0.2
   
  ## questions
  * find a good typical topic (with "free" data)
+
+## Releases
+
+v0.0.2
+* smaller ui improvements
+* add flashcard with more advanced data (e.g. image)
+
+v0.0.1
+* basic prototype of the flashcard application
