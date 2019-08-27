@@ -7,11 +7,19 @@
     </small>
   </div>
 
+  <div *ngIf="displayCongratulationAlert" class="alert alert-success" role="alert">
+      <i class="fas fa-trophy"></i>&nbsp;Congratulation, you have learned all the flashcards!&nbsp;<i class="fas fa-trophy"></i><br>Please choose new topics to study.
+    </div>
+
+  <div *ngIf="displayNothingToLearnAlert" class="alert alert-warning" role="alert">
+    You already have learned all the flashcards! Please choose new topics to study.
+  </div>
+
   <div *ngIf="studyStarted" class="row">
     <div class="col-sm">
     </div>
     <div class="col-sm-6">
-        <app-study-level></app-study-level>
+      <app-study-level></app-study-level>
     </div>
     <div class="col-sm">
     </div>
@@ -21,7 +29,8 @@
     <div class="col-sm">
     </div>
     <div class="col-sm-6">
-      <a routerLink="quiz" class="btn btn-primary btn-lg btn-block">{{ studyStarted ? 'Continue study!': 'Start study!' }}</a>
+      <a (click)="study()"
+        class="btn btn-primary btn-lg btn-block">{{ studyStarted ? 'Continue study!': 'Start study!' }}</a>
     </div>
     <div class="col-sm">
     </div>

@@ -48,4 +48,8 @@ export class Quiz {
   get totalCount() {
     return this._totalCount;
   }
+
+  get hasToLearn() {
+    return this.totalCount - this.learnedCount > 0;
+  }
 }

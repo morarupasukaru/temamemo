@@ -5,6 +5,14 @@
     </div>
   </div>
 
+  <div *ngIf="showLevelUpAlert" class="row mt-1">
+    <div class="col-12">
+      <div class="alert alert-success" role="alert">
+        Congratulation! You reach the level {{ level }}!
+      </div>
+    </div>
+  </div>
+
   <div class="row mt-1">
     <div class="col-12">
       <app-study-level></app-study-level>
@@ -35,7 +43,7 @@
                   title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i
                     class="fas fa-check-double"></i></span>
                 <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i
-                    class="fas fa-arrow-right"></i><i style="color: #FFD700" class="fas fa-trophy"></i></span>
+                    class="fas fa-arrow-right"></i><i class="fas fa-trophy" style="color: #FFD700"></i></span>
               </span>
             </span>
           </h5>

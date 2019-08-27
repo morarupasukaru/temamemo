@@ -1,29 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QuizService } from '../../services/quiz-service';
 import { Flashcard } from '../../models/flashcard';
 import { Router } from '@angular/router';
 import { QuizState } from './quiz-state';
 import { StudyLevelService } from 'src/app/widgets/study-level/study-level.service';
 import { Quiz } from 'src/app/models/quiz';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
   styleUrls: ['./quiz-page.component.css']
 })
-export class QuizPageComponent implements OnInit {
+export class QuizPageComponent implements OnInit, OnDestroy {
 
   answerDisplayed = false;
   currentFlashcard: Flashcard = new Flashcard();
   count = 0;
   quizStates: QuizState[];
   quiz: Quiz;
+  subscription: Subscription;
+  level = 1;
+  showLevelUpAlert = false;
 
   constructor(private quizService: QuizService, private studyLevelService: StudyLevelService, private router: Router) { }
 
   ngOnInit() {
     this.quiz = this.quizService.getQuiz();
     this.showQuestion();
+
+    this.subscription = this.studyLevelService.studyLevelSubject.subscribe(studyLevel => {
+      if (studyLevel.level > this.level) {
+        this.level = studyLevel.level;
+        this.showLevelUpAlert = true;
+        setTimeout(() => {
+          this.showLevelUpAlert = false;
+        }, 5000);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   displayAnswer() {

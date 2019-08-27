@@ -14,7 +14,7 @@ export class QuizService {
   constructor(private flashcardService: FlashcardService) { }
 
   getQuiz() {
-    if (!this.quiz || this.quiz.learnedCount === this.quiz.totalCount) {
+    if (!this.quiz) {
       this.quiz = new Quiz(this.getFlashcards());
     }
     return this.quiz;
