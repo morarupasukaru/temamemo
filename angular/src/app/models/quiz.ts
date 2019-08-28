@@ -23,10 +23,13 @@ export class Quiz {
   nextQuestion() {
     this.index++;
     if (this.index >= this.items.length) {
+      this.index = 0;
+    }
+    if (this.items.length > 0) {
+      this.currentQuizItemSubject.next(this.getCurrentQuestion());
+    } else {
       this.currentQuizItemSubject.complete();
       this.resetQuizItemSubject();
-    } else {
-      this.currentQuizItemSubject.next(this.getCurrentQuestion());
     }
   }
 

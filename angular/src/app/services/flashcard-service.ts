@@ -17,7 +17,7 @@ export class FlashcardService {
       {
         topic: 'Capital',
         question: [FlashcardItem.buildText({ text: 'What is the capital of Switzerland ?' })],
-        answer: [FlashcardItem.buildText({ text: 'Bern', centered: true })]
+        answer: [FlashcardItem.buildText({ text: 'Bern', centered: true, bigText: true })]
       },
       {
         topic: 'Multiplication table',
@@ -38,7 +38,7 @@ export class FlashcardService {
             url: 'https://upload.wikimedia.org/wikipedia/commons/5/57/Flag_of_Canton_of_Neuch%C3%A2tel.svg',
             width: '100px'})],
         answer: [
-          FlashcardItem.buildText({ text: 'Neuchâtel', centered: true }),
+          FlashcardItem.buildText({ text: 'Neuchâtel', centered: true, bigText: true }),
           FlashcardItem.buildLink({
             url: 'https://en.wikipedia.org/wiki/Flags_and_arms_of_cantons_of_Switzerland',
             description: 'See on wikipedia' })]
@@ -46,10 +46,10 @@ export class FlashcardService {
       {
         topic: 'German Listening',
         question: [
-          FlashcardItem.buildText({ text: 'What is said?' }),
+          FlashcardItem.buildText({ text: 'What is said?', centered: true }),
           FlashcardItem.buildSound({ url: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/De-Kamm.ogg', mediatype: 'audio/ogg'})],
         answer: [
-          FlashcardItem.buildText({ text: 'Kamm'}),
+          FlashcardItem.buildText({ text: 'Kamm', centered: true, bigText: true}),
           FlashcardItem.buildLink({ url: 'https://dict.leo.org/german-english/kamm', description: 'See leo.org entry'})
         ]
       }
