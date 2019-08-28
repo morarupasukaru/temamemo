@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, AfterContentInit } from '@angular/core';
 import { QuizService } from '../../services/quiz-service';
-import { Flashcard } from '../../models/flashcard';
 import { Router } from '@angular/router';
-import { QuizState } from './quiz-state';
 import { StudyLevelService } from 'src/app/widgets/study-level/study-level.service';
 import { Quiz } from 'src/app/models/quiz';
 import { Subscription } from 'rxjs';
 import { QuizItem } from 'src/app/models/quiz-item';
+import { Flashcard } from 'src/app/models/flashcard';
+import { StudyHistory } from 'src/app/models/study-history';
 
 @Component({
   selector: 'app-quiz-page',
@@ -15,22 +15,33 @@ import { QuizItem } from 'src/app/models/quiz-item';
 })
 export class QuizPageComponent implements OnInit, OnDestroy {
 
-  answerDisplayed = false;
-  item: QuizItem = new QuizItem();
-  count = 0;
-  quizStates: QuizState[];
   quiz: Quiz;
-  subscription: Subscription;
+  item: QuizItem;
+  count = 1;
   level = 1;
+  answerDisplayed = false;
   showLevelUpAlert = false;
+  subscriptionStudyLevel: Subscription;
+  subscriptionCurentQuizItem: Subscription;
 
   constructor(private quizService: QuizService, private studyLevelService: StudyLevelService, private router: Router) { }
 
   ngOnInit() {
     this.quiz = this.quizService.getQuiz();
-    this.showQuestion();
+    this.showQuestion(this.quiz.getCurrentQuestion());
 
-    this.subscription = this.studyLevelService.studyLevelSubject.subscribe(studyLevel => {
+    this.subscriptionCurentQuizItem = this.quiz.currentQuizItemSubject.subscribe(
+      {
+        next: (item: QuizItem) => {
+          this.showQuestion(item);
+        },
+        complete: () => {
+          this.backToHomePage();
+        }
+      }
+    );
+
+    this.subscriptionStudyLevel = this.studyLevelService.studyLevelSubject.subscribe(studyLevel => {
       if (studyLevel.level > this.level) {
         this.level = studyLevel.level;
         this.showLevelUpAlert = true;
@@ -41,8 +52,22 @@ export class QuizPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  private showQuestion(item: QuizItem) {
+    if (!item) {
+      this.backToHomePage();
+    } else {
+      this.item = item;
+      this.answerDisplayed = false;
+    }
+  }
+
+  private backToHomePage() {
+    this.router.navigate(['']);
+  }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionStudyLevel.unsubscribe();
+    this.subscriptionCurentQuizItem.unsubscribe();
   }
 
   displayAnswer() {
@@ -51,50 +76,22 @@ export class QuizPageComponent implements OnInit, OnDestroy {
 
   skipQuestion() {
     this.answerDisplayed = false;
-    this.quiz.nextQuestion();
-    this.showQuestion();
+    this.nextQuestion();
   }
 
   ok() {
     this.quiz.ok();
-    this.quiz.nextQuestion();
     this.studyLevelService.increaseXp();
-    this.showQuestion();
+    this.nextQuestion();
   }
 
   ko() {
     this.quiz.ko();
-    this.quiz.nextQuestion();
-    this.showQuestion();
+    this.nextQuestion();
   }
 
-  showQuestion() {
-    const question = this.quiz.getCurrentQuestion();
-    if (!question) {
-      this.router.navigate(['']);
-    } else {
-      this.item = question;
-      this.count++;
-      this.answerDisplayed = false;
-      this.quizStates = [];
-      if (this.item.studyHistory.isNew()) {
-        this.quizStates.push(QuizState.New);
-      } else if (this.item.studyHistory.isDifficult()) {
-        this.quizStates.push(QuizState.Difficult);
-
-      } else if (this.item.studyHistory.isAlmostLearned()) {
-        this.quizStates.push(QuizState.AlmostLearned);
-
-      } else if (this.item.studyHistory.comboOk > 0) {
-        const doubleOkCount = Math.floor(this.item.studyHistory.comboOk / 2);
-        for (let i = 0; i < doubleOkCount; i++) {
-          this.quizStates.push(QuizState.DoubleOk);
-        }
-        const okCount = this.item.studyHistory.comboOk % 2;
-        for (let i = 0; i < okCount; i++) {
-          this.quizStates.push(QuizState.Ok);
-        }
-      }
-    }
+  private nextQuestion() {
+    this.count++;
+    this.quiz.nextQuestion();
   }
 }

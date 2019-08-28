@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div [hidden]="!item" class="container mt-2">
   <div class="row justify-content-end">
     <div class="col-auto">
       <app-stopwatch></app-stopwatch>
@@ -30,23 +30,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Question {{ count }}
-            <!-- TODO custom component -->
-            <span *ngFor="let state of quizStates">
-              <span [ngSwitch]="state">
-                <span *ngSwitchCase="'New'" style="color: blue" title="new question"><i
-                    class="far fa-lightbulb"></i></span>
-                <span *ngSwitchCase="'Difficult'" style="color: #ff4d4d" title="difficult question"><i
-                    class="fas fa-pepper-hot"></i></span>
-                <span *ngSwitchCase="'Ok'" style="color: #28a745"
-                  title="question answered {{ item.studyHistory.comboOk }} time correct!"><i
-                    class="fas fa-check"></i></span>
-                <span *ngSwitchCase="'DoubleOk'" style="color: #28a745"
-                  title="question answered {{ item.studyHistory.comboOk }} time correct!"><i
-                    class="fas fa-check-double"></i></span>
-                <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i
-                    class="fas fa-arrow-right"></i><i class="fas fa-trophy" style="color: #FFD700"></i></span>
-              </span>
-            </span>
+            <app-quiz-state [quiz]="quiz"></app-quiz-state>
           </h5>
           <h6 *ngIf="item.flashcard.topic" class="card-subtitle mb-2 text-muted">{{ item.flashcard.topic }}</h6>
           <p *ngFor="let question of item.flashcard.question" class="card-text">{{ question }}</p>

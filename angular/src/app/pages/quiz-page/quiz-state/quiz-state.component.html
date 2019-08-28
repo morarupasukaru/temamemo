@@ -1,0 +1,13 @@
+<span *ngFor="let state of quizStates">
+  <span [ngSwitch]="state">
+    <span *ngSwitchCase="'New'" style="color: blue" title="new question"><i class="far fa-lightbulb"></i></span>
+    <span *ngSwitchCase="'Difficult'" style="color: #ff4d4d" title="difficult question"><i
+        class="fas fa-pepper-hot"></i></span>
+    <span *ngSwitchCase="'Ok'" style="color: #28a745"
+      title="question answered {{ comboOk }} time correct!"><i class="fas fa-check"></i></span>
+    <span *ngSwitchCase="'DoubleOk'" style="color: #28a745"
+      title="question answered {{ comboOk }} time correct!"><i class="fas fa-check-double"></i></span>
+    <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i class="fas fa-arrow-right"></i><i
+        class="fas fa-trophy" style="color: #FFD700"></i></span>
+  </span>
+</span>
