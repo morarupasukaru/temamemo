@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Flashcard } from '../models/flashcard';
 import { FlashcardService } from './flashcard-service';
-import { FlashcardStudyHistory } from '../models/flashcard-study-history';
+import { StudyHistory } from '../models/study-history';
 import { Quiz } from '../models/quiz';
+import { QuizItem } from '../models/quiz-item';
 
 @Injectable({
   providedIn: 'root'
@@ -15,26 +15,27 @@ export class QuizService {
 
   getQuiz() {
     if (!this.quiz) {
-      this.quiz = new Quiz(this.getFlashcards());
+      this.quiz = new Quiz(this.getItems());
     }
     return this.quiz;
   }
 
-  private getFlashcards(): Flashcard[] {
+  private getItems(): QuizItem[] {
     const flashcards = this.flashcardService.getFlashcards();
-    this.shuffle(flashcards);
+    const items: QuizItem[] = [];
     flashcards.forEach(flashcard => {
-      flashcard.studyHistory = new FlashcardStudyHistory();
+      items.push({ flashcard, studyHistory: new StudyHistory() });
     });
-    return flashcards;
+    this.shuffle(items);
+    return items;
   }
 
-  private shuffle(flashcards: Flashcard[]) {
-    for (let i = flashcards.length - 1; i >= 0; i--) {
+  private shuffle(items: QuizItem[]) {
+    for (let i = items.length - 1; i >= 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
-      const itemAtIndex = flashcards[randomIndex];
-      flashcards[randomIndex] = flashcards[i];
-      flashcards[i] = itemAtIndex;
+      const itemAtIndex = items[randomIndex];
+      items[randomIndex] = items[i];
+      items[i] = itemAtIndex;
     }
   }
 }

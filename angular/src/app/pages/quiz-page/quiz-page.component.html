@@ -38,18 +38,18 @@
                 <span *ngSwitchCase="'Difficult'" style="color: #ff4d4d" title="difficult question"><i
                     class="fas fa-pepper-hot"></i></span>
                 <span *ngSwitchCase="'Ok'" style="color: #28a745"
-                  title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i
+                  title="question answered {{ item.studyHistory.comboOk }} time correct!"><i
                     class="fas fa-check"></i></span>
                 <span *ngSwitchCase="'DoubleOk'" style="color: #28a745"
-                  title="question answered {{ currentFlashcard.studyHistory.comboOk }} time correct!"><i
+                  title="question answered {{ item.studyHistory.comboOk }} time correct!"><i
                     class="fas fa-check-double"></i></span>
                 <span *ngSwitchCase="'AlmostLearned'" title="point is nearly learned!"><i
                     class="fas fa-arrow-right"></i><i class="fas fa-trophy" style="color: #FFD700"></i></span>
               </span>
             </span>
           </h5>
-          <h6 *ngIf="currentFlashcard.topic" class="card-subtitle mb-2 text-muted">{{ currentFlashcard.topic }}</h6>
-          <p class="card-text">{{ currentFlashcard.question }}</p>
+          <h6 *ngIf="item.flashcard.topic" class="card-subtitle mb-2 text-muted">{{ item.flashcard.topic }}</h6>
+          <p *ngFor="let question of item.flashcard.question" class="card-text">{{ question }}</p>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
         <div class="card-body">
           <div *ngIf="answerDisplayed">
             <h5 class="card-title">Answer</h5>
-            <p class="card-text">{{ currentFlashcard.answer }}</p>
+            <p *ngFor="let answer of item.flashcard.answer" class="card-text">{{ answer }}</p>
           </div>
           <div *ngIf="!answerDisplayed" class="row">
             <div class="col-sm">
@@ -152,7 +152,7 @@
             <!-- TODO autoplay to not -->
             <audio controls autoplay>
               <source src="https://upload.wikimedia.org/wikipedia/commons/b/b8/De-Kamm.ogg" type="audio/ogg">
-              Your browser does not support the audio element.
+              Your browser does not support the audio/ogg element.
             </audio>
           </div>
         </div>

@@ -1,44 +1,44 @@
-import { Flashcard} from './flashcard';
 import { Subject } from 'rxjs';
+import { QuizItem } from './quiz-item';
 
 export class Quiz {
-  private flashcards: Flashcard[];
+  private items: QuizItem[];
   private index: number;
   private _totalCount: number;
   private _learnedCount: number;
   quizProgressSubject = new Subject<{learnedCount: number, totalCount: number}>();
 
-  constructor(flashcards: Flashcard[]) {
-    this.flashcards = flashcards;
+  constructor(items: QuizItem[]) {
+    this.items = items;
     this.index = 0;
-    this._totalCount = this.flashcards.length;
+    this._totalCount = this.items.length;
     this._learnedCount = 0;
   }
 
-  getCurrentQuestion(): Flashcard {
-    return this.flashcards[this.index];
+  getCurrentQuestion(): QuizItem {
+    return this.items[this.index];
   }
 
   nextQuestion() {
     this.index++;
-    if (this.index >= this.flashcards.length) {
+    if (this.index >= this.items.length) {
       this.index = 0;
     }
   }
 
   ok() {
-    const flashcard = this.flashcards[this.index];
-    flashcard.studyHistory.ok();
-    if (flashcard.studyHistory.isLearned()) {
+    const item = this.items[this.index];
+    item.studyHistory.ok();
+    if (item.studyHistory.isLearned()) {
       this._learnedCount++;
-      this.flashcards.splice(this.index, 1);
+      this.items.splice(this.index, 1);
       this.quizProgressSubject.next({learnedCount: this._learnedCount, totalCount: this._totalCount });
     }
   }
 
   ko() {
-    const flashcard = this.flashcards[this.index];
-    flashcard.studyHistory.ko();
+    const item = this.items[this.index];
+    item.studyHistory.ko();
   }
 
   get learnedCount() {

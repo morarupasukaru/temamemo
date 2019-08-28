@@ -1,4 +1,4 @@
-export class FlashcardStudyHistory {
+export class StudyHistory {
 
   private static readonly LEARNED_OK_THRESHOLD = 2;
   private static readonly DIFFICULT_KO_THRESHOLD = 1;
@@ -29,15 +29,15 @@ export class FlashcardStudyHistory {
   }
 
   isDifficult() {
-    return this._maxComboKo >= FlashcardStudyHistory.DIFFICULT_KO_THRESHOLD && this._comboOk === 0;
+    return this._maxComboKo >= StudyHistory.DIFFICULT_KO_THRESHOLD && this._comboOk === 0;
   }
 
   isAlmostLearned() {
-    return this._maxComboOk >= FlashcardStudyHistory.LEARNED_OK_THRESHOLD - 1;
+    return this._maxComboOk >= StudyHistory.LEARNED_OK_THRESHOLD - 1;
   }
 
   isLearned() {
-    return this._maxComboOk >= FlashcardStudyHistory.LEARNED_OK_THRESHOLD;
+    return this._maxComboOk >= StudyHistory.LEARNED_OK_THRESHOLD;
   }
 
   get comboOk() {

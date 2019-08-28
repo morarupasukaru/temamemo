@@ -6,6 +6,7 @@ import { QuizState } from './quiz-state';
 import { StudyLevelService } from 'src/app/widgets/study-level/study-level.service';
 import { Quiz } from 'src/app/models/quiz';
 import { Subscription } from 'rxjs';
+import { QuizItem } from 'src/app/models/quiz-item';
 
 @Component({
   selector: 'app-quiz-page',
@@ -15,7 +16,7 @@ import { Subscription } from 'rxjs';
 export class QuizPageComponent implements OnInit, OnDestroy {
 
   answerDisplayed = false;
-  currentFlashcard: Flashcard = new Flashcard();
+  item: QuizItem = new QuizItem();
   count = 0;
   quizStates: QuizState[];
   quiz: Quiz;
@@ -72,24 +73,24 @@ export class QuizPageComponent implements OnInit, OnDestroy {
     if (!question) {
       this.router.navigate(['']);
     } else {
-      this.currentFlashcard = question;
+      this.item = question;
       this.count++;
       this.answerDisplayed = false;
       this.quizStates = [];
-      if (this.currentFlashcard.studyHistory.isNew()) {
+      if (this.item.studyHistory.isNew()) {
         this.quizStates.push(QuizState.New);
-      } else if (this.currentFlashcard.studyHistory.isDifficult()) {
+      } else if (this.item.studyHistory.isDifficult()) {
         this.quizStates.push(QuizState.Difficult);
 
-      } else if (this.currentFlashcard.studyHistory.isAlmostLearned()) {
+      } else if (this.item.studyHistory.isAlmostLearned()) {
         this.quizStates.push(QuizState.AlmostLearned);
 
-      } else if (this.currentFlashcard.studyHistory.comboOk > 0) {
-        const doubleOkCount = Math.floor(this.currentFlashcard.studyHistory.comboOk / 2);
+      } else if (this.item.studyHistory.comboOk > 0) {
+        const doubleOkCount = Math.floor(this.item.studyHistory.comboOk / 2);
         for (let i = 0; i < doubleOkCount; i++) {
           this.quizStates.push(QuizState.DoubleOk);
         }
-        const okCount = this.currentFlashcard.studyHistory.comboOk % 2;
+        const okCount = this.item.studyHistory.comboOk % 2;
         for (let i = 0; i < okCount; i++) {
           this.quizStates.push(QuizState.Ok);
         }
