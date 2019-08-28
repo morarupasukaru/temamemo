@@ -8,11 +8,12 @@ flashcard educational application (2019 - status: concept in refine)
 credits
     https://game-icons.net/about.html
     https://game-icons.net/1x1/delapouite/files.html
-
-v0.0.2
-- multimedia
-    https://getbootstrap.com/docs/4.3/components/card/
 - bug white text for button without href
+- refactor components
+
+## Installation for github
+
+distribution command: ng build --prod --base-href temamemo
 
 ## difficulty / estimation
 * should be manageable (depending of the scope)
@@ -56,11 +57,9 @@ v0.0.2
  * find a good typical topic (with "free" data)
 
 ## Releases
-
 v0.0.2
 * small ui improvements
 * add flashcard with more advanced data (e.g. image)
-* refactor components
 
 v0.0.1
 * basic prototype of the flashcard application
