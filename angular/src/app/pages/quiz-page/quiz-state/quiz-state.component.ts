@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { QuizState } from './quiz-state';
-import { QuizItem } from 'src/app/models/quiz-item';
+import { Quiz } from '../../../models/quiz';
+import { QuizItem } from '../../../models/quiz-item';
 import { Subscription } from 'rxjs';
-import { Quiz } from 'src/app/models/quiz';
 
 @Component({
   selector: 'app-quiz-state',

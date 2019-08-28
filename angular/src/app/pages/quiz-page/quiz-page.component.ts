@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, AfterContentInit } from '@angular/core';
 import { QuizService } from '../../services/quiz-service';
 import { Router } from '@angular/router';
-import { StudyLevelService } from 'src/app/widgets/study-level/study-level.service';
-import { Quiz } from 'src/app/models/quiz';
+import { StudyLevelService } from '../../widgets/study-level/study-level.service';
+import { Quiz } from '../../models/quiz';
+import { QuizItem } from '../../models/quiz-item';
 import { Subscription } from 'rxjs';
-import { QuizItem } from 'src/app/models/quiz-item';
-import { Flashcard } from 'src/app/models/flashcard';
-import { StudyHistory } from 'src/app/models/study-history';
 
 @Component({
   selector: 'app-quiz-page',

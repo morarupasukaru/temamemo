@@ -9,6 +9,7 @@ import { StudyLevelComponent } from './widgets/study-level/study-level.component
 import { StopwatchComponent } from './widgets/stopwatch/stopwatch.component';
 import { QuizProgressComponent } from './widgets/quiz-progress/quiz-progress.component';
 import { QuizStateComponent } from './pages/quiz-page/quiz-state/quiz-state.component';
+import { FlashcardItemComponent } from './pages/quiz-page/flashcard-item/flashcard-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuizStateComponent } from './pages/quiz-page/quiz-state/quiz-state.comp
     StudyLevelComponent,
     StopwatchComponent,
     QuizProgressComponent,
-    QuizStateComponent
+    QuizStateComponent,
+    FlashcardItemComponent
   ],
   imports: [
     BrowserModule,

@@ -33,20 +33,19 @@
             <app-quiz-state [quiz]="quiz"></app-quiz-state>
           </h5>
           <h6 *ngIf="item.flashcard.topic" class="card-subtitle mb-2 text-muted">{{ item.flashcard.topic }}</h6>
-          <p *ngFor="let question of item.flashcard.question" class="card-text">{{ question }}</p>
+          <app-flashcard-item [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.question"></app-flashcard-item>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- typical image - text flashcard - start -->
   <div class="row mt-3">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
           <div *ngIf="answerDisplayed">
             <h5 class="card-title">Answer</h5>
-            <p *ngFor="let answer of item.flashcard.answer" class="card-text">{{ answer }}</p>
+            <app-flashcard-item [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.answer"></app-flashcard-item>
           </div>
           <div *ngIf="!answerDisplayed" class="row">
             <div class="col-sm">
@@ -61,102 +60,6 @@
       </div>
     </div>
   </div>
-
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Question 1</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Flags of Swiss Cantons</h6>
-          <!-- order text > image > link -->
-          <!-- TODO text-center or not -->
-          <!-- TODO style="width: ..." -->
-          <p class="card-text">Which Swiss Canton belong this flag?</p>
-          <p class="text-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Flag_of_Canton_of_Neuch%C3%A2tel.svg"
-              class="img-responsive" style="width: 100px">
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Answer</h5>
-          <p class="card-text">Neuchâtel</p>
-          <a href="https://en.wikipedia.org/wiki/Flags_and_arms_of_cantons_of_Switzerland" target="_blank"
-            class="btn btn-outline-primary">See on wikipedia</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- typical image - text flashcard - end -->
-
-  <!-- typical bigchar flashcard - start -->
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Question 1</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Hiragana > Rōmaji</h6>
-          <!-- TODO h1 text-center class -->
-          <p class="h1 card-text text-center">あ</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Answer</h5>
-          <p class="h1 card-text text-center">a</p>
-          <a href="https://en.wikipedia.org/wiki/Hiragana" target="_blank" class="btn btn-outline-primary">See on
-            wikipedia</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- typical bigchar flashcard - end -->
-
-
-  <!-- typical music flashcard - start -->
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Question 1</h5>
-          <h6 class="card-subtitle mb-2 text-muted">German Listening</h6>
-          <p class="card-text text-center">What is said?</p>
-          <div class="text-center">
-            <!-- TODO autoplay to not -->
-            <audio controls autoplay>
-              <source src="https://upload.wikimedia.org/wikipedia/commons/b/b8/De-Kamm.ogg" type="audio/ogg">
-              Your browser does not support the audio/ogg element.
-            </audio>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Answer</h5>
-            <p class="card-text text-center">Kamm</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- typical music flashcard - end -->
-
 
   <div *ngIf="!answerDisplayed" class="row mt-1">
     <div class="col-sm">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudyLevelService } from '../../widgets/study-level/study-level.service';
-import { QuizService } from 'src/app/services/quiz-service';
+import { QuizService } from '../../services/quiz-service';
 import { Router } from '@angular/router';
 
 @Component({
