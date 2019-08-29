@@ -8,12 +8,18 @@ flashcard educational application (2019 - status: concept in refine)
 credits
     https://game-icons.net/about.html
     https://game-icons.net/1x1/delapouite/files.html
-- bug white text for button without href
-- refactor components
+Bug
+    - bug white text for button without href
+    - temamemo/temamemo twice
+    - refactor components
+    - bug on iphone with ogg > not display "do not read ogg"
+    - mp3 insteaed of ogg
 
 ## Installation for github
 
-distribution command: ng build --prod --base-href temamemo
+distribution command: 
+ng build -prod --base-href / --deploy-url /temamemo
+ng build --prod --base-href /temamemo
 
 ## difficulty / estimation
 * should be manageable (depending of the scope)
