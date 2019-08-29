@@ -17,9 +17,7 @@ Bug
 
 ## Installation for github
 
-distribution command: 
-ng build -prod --base-href / --deploy-url /temamemo
-ng build --prod --base-href /temamemo
+ng build --prod --base-href / --deploy-url temamemo/
 
 ## difficulty / estimation
 * should be manageable (depending of the scope)
