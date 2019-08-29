@@ -1,10 +1,14 @@
 <p class="card-text" [ngSwitch]="item.type" [ngClass]="{'text-center': item.centered}">
   <span *ngSwitchCase="'Text'" [ngClass]="{h1: item.bigText}">{{ item.value }}</span>
-  <img *ngSwitchCase="'Image'" class="img-responsive" [src]="item.value" [attr.alt]="item.description" [style.width]="item.width">
-  <audio *ngSwitchCase="'Sound'" controls [attr.autoplay]="item.autoplay">
-    <source [src]="item.value" [type]="item.mediatype">
-    Your browser does not support the {{ item.mediatype }} element.
-  </audio>
+  <img *ngSwitchCase="'Image'" class="img-responsive" [src]="item.value" [attr.alt]="item.description"
+    [style.width]="item.width">
+  <span *ngSwitchCase="'Sound'">
+    <audio controls [attr.autoplay]="item.autoplay">
+      <source [src]="item.value" [type]="item.mediatype">
+      Your browser does not support the <code>audio</code> element.
+    </audio>
+    <p *ngIf="!mediatypeSupported">Your browser does not support the {{ item.mediatype }} sounds.</p>
+  </span>
   <a *ngSwitchCase="'Link'" class="btn btn-outline-primary" target="_blank"
     [href]="item.value">{{ item.description }}</a>
 </p>
