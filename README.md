@@ -9,8 +9,6 @@ credits
     https://game-icons.net/about.html
     https://game-icons.net/1x1/delapouite/files.html
 Bug
-    - bug white text for button without href
-    - temamemo/temamemo twice
     - refactor components
     - bug on iphone with ogg > not display "do not read ogg"
     - mp3 insteaed of ogg
