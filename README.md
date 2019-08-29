@@ -10,7 +10,6 @@ credits
     https://game-icons.net/1x1/delapouite/files.html
 Bug
     - refactor components
-    - bug on iphone with ogg > not display "do not read ogg"
     - mp3 insteaed of ogg
 
 ## Installation for github
