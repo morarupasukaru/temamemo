@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, AfterContentInit } from '@angular/core';
-import { QuizService } from '../../services/quiz-service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { StudyLevelService } from '../../widgets/study-level/study-level.service';
-import { Quiz } from '../../models/quiz';
-import { QuizItem } from '../../models/quiz-item';
 import { Subscription } from 'rxjs';
+
+import { Quiz } from '../../services/quiz/quiz';
+import { QuizItem } from '../../services/quiz/quiz-item';
+import { QuizService } from '../../services/quiz/quiz-service';
+import { LevelProgressService } from '../../widgets/level-progress/level-progress.service';
 
 @Component({
   selector: 'app-quiz-page',
-  templateUrl: './quiz-page.component.html',
-  styleUrls: ['./quiz-page.component.css']
+  templateUrl: './quiz-page.component.html'
 })
 export class QuizPageComponent implements OnInit, OnDestroy {
 
@@ -19,10 +19,10 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   level = 1;
   answerDisplayed = false;
   showLevelUpAlert = false;
-  subscriptionStudyLevel: Subscription;
+  subscriptionLevelProgress: Subscription;
   subscriptionCurentQuizItem: Subscription;
 
-  constructor(private quizService: QuizService, private studyLevelService: StudyLevelService, private router: Router) { }
+  constructor(private quizService: QuizService, private levelProgressService: LevelProgressService, private router: Router) { }
 
   ngOnInit() {
     this.quiz = this.quizService.getQuiz();
@@ -39,9 +39,9 @@ export class QuizPageComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.subscriptionStudyLevel = this.studyLevelService.studyLevelSubject.subscribe(studyLevel => {
-      if (studyLevel.level > this.level) {
-        this.level = studyLevel.level;
+    this.subscriptionLevelProgress = this.levelProgressService.levelProgressSubject.subscribe(levelProgress => {
+      if (levelProgress.level > this.level) {
+        this.level = levelProgress.level;
         this.showLevelUpAlert = true;
         setTimeout(() => {
           this.showLevelUpAlert = false;
@@ -64,7 +64,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptionStudyLevel.unsubscribe();
+    this.subscriptionLevelProgress.unsubscribe();
     this.subscriptionCurentQuizItem.unsubscribe();
   }
 
@@ -79,7 +79,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
 
   ok() {
     this.quiz.ok();
-    this.studyLevelService.increaseXp();
+    this.levelProgressService.increaseXp();
     this.nextQuestion();
   }
 

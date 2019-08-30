@@ -5,8 +5,7 @@ import { StopwatchTime } from './stopwatch-time';
 
 @Component({
   selector: 'app-stopwatch',
-  templateUrl: './stopwatch.component.html',
-  styleUrls: ['./stopwatch.component.css']
+  templateUrl: './stopwatch.component.html'
 })
 export class StopwatchComponent implements OnInit, OnDestroy {
 

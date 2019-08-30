@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FlashcardService } from './flashcard-service';
-import { StudyHistory } from '../models/study-history';
-import { Quiz } from '../models/quiz';
-import { QuizItem } from '../models/quiz-item';
+import { FlashcardService } from '../flashcards/flashcard-service';
+import { StudyHistory } from './study-history';
+import { Quiz } from './quiz';
+import { QuizItem } from './quiz-item';
 
 @Injectable({
   providedIn: 'root'

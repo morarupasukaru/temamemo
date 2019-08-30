@@ -1,4 +1,4 @@
-import { Flashcard } from './flashcard';
+import { Flashcard } from '../flashcards/flashcard';
 import { StudyHistory } from './study-history';
 
 export class QuizItem {

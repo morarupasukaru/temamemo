@@ -1,18 +1,17 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { QuizState } from './quiz-state';
-import { Quiz } from '../../../models/quiz';
-import { QuizItem } from '../../../models/quiz-item';
 import { Subscription } from 'rxjs';
+import { State } from './state';
+import { Quiz } from '../../../services/quiz/quiz';
+import { QuizItem } from '../../../services/quiz/quiz-item';
 
 @Component({
-  selector: 'app-quiz-state',
-  templateUrl: './quiz-state.component.html',
-  styleUrls: ['./quiz-state.component.css']
+  selector: 'app-state',
+  templateUrl: './state.component.html'
 })
-export class QuizStateComponent implements OnInit, OnDestroy {
+export class StateComponent implements OnInit, OnDestroy {
 
   @Input() quiz: Quiz;
-  quizStates: QuizState[];
+  quizStates: State[];
   comboOk: number;
   subscription: Subscription;
 
@@ -45,21 +44,21 @@ export class QuizStateComponent implements OnInit, OnDestroy {
     this.quizStates = [];
     if (!!quizItem && !!quizItem.studyHistory) {
       if (quizItem.studyHistory.isNew()) {
-        this.quizStates.push(QuizState.New);
+        this.quizStates.push(State.New);
       } else if (quizItem.studyHistory.isDifficult()) {
-        this.quizStates.push(QuizState.Difficult);
+        this.quizStates.push(State.Difficult);
 
       } else if (quizItem.studyHistory.isAlmostLearned()) {
-        this.quizStates.push(QuizState.AlmostLearned);
+        this.quizStates.push(State.AlmostLearned);
 
       } else if (quizItem.studyHistory.comboOk > 0) {
         const doubleOkCount = Math.floor(quizItem.studyHistory.comboOk / 2);
         for (let i = 0; i < doubleOkCount; i++) {
-          this.quizStates.push(QuizState.DoubleOk);
+          this.quizStates.push(State.DoubleOk);
         }
         const okCount = quizItem.studyHistory.comboOk % 2;
         for (let i = 0; i < okCount; i++) {
-          this.quizStates.push(QuizState.Ok);
+          this.quizStates.push(State.Ok);
         }
       }
     }

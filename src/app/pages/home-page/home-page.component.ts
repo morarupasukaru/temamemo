@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { StudyLevelService } from '../../widgets/study-level/study-level.service';
-import { QuizService } from '../../services/quiz-service';
 import { Router } from '@angular/router';
+import { LevelProgressService } from '../../widgets/level-progress/level-progress.service';
+import { QuizService } from '../../services/quiz/quiz-service';
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  templateUrl: './home-page.component.html'
 })
 export class HomePageComponent implements OnInit {
 
@@ -15,11 +14,11 @@ export class HomePageComponent implements OnInit {
   displayNothingToLearnAlert = false;
   displayCongratulationAlert = false;
 
-  constructor(private studyLevelService: StudyLevelService, private quizService: QuizService, private router: Router) { }
+  constructor(private levelProgressService: LevelProgressService, private quizService: QuizService, private router: Router) { }
 
   ngOnInit() {
-    const studyLevel = this.studyLevelService.studyLevel;
-    this.studyStarted = studyLevel.level > 1 || studyLevel.progress !== 0;
+    const levelProgress = this.levelProgressService.levelProgress;
+    this.studyStarted = levelProgress.level > 1 || levelProgress.progress !== 0;
     this.hasToLearn = this.quizService.getQuiz().hasToLearn;
     this.displayCongratulationAlert = !this.hasToLearn;
     if (this.displayCongratulationAlert) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Flashcard } from '../models/flashcard';
-import { FlashcardItem } from '../models/flashcard-item';
+import { Flashcard } from './flashcard';
+import { FlashcardItem } from './flashcard-item';
 
 @Injectable({
   providedIn: 'root'

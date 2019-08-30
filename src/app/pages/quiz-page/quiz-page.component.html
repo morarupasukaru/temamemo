@@ -15,13 +15,13 @@
 
   <div class="row mt-1">
     <div class="col-12">
-      <app-study-level></app-study-level>
+      <app-level-progress></app-level-progress>
     </div>
   </div>
 
   <div class="row mt-1">
     <div class="col-12">
-      <app-quiz-progress></app-quiz-progress>
+      <app-trophies-progress></app-trophies-progress>
     </div>
   </div>
 
@@ -30,10 +30,10 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Question {{ count }}
-            <app-quiz-state [quiz]="quiz"></app-quiz-state>
+            <app-state [quiz]="quiz"></app-state>
           </h5>
           <h6 *ngIf="item.flashcard.topic" class="card-subtitle mb-2 text-muted">{{ item.flashcard.topic }}</h6>
-          <app-flashcard-item [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.question"></app-flashcard-item>
+          <app-flashcard [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.question"></app-flashcard>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <div class="card-body">
           <div *ngIf="answerDisplayed">
             <h5 class="card-title">Answer</h5>
-            <app-flashcard-item [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.answer"></app-flashcard-item>
+            <app-flashcard [item]="flashcardItem" *ngFor="let flashcardItem of item.flashcard.answer"></app-flashcard>
           </div>
           <div *ngIf="!answerDisplayed" class="row">
             <div class="col-sm">

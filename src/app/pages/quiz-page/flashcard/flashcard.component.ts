@@ -1,13 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FlashcardItemType } from '../../../models/flashcard-item-type';
-import { FlashcardItem } from '../../../models/flashcard-item';
+import { FlashcardItem } from '../../../services/flashcards/flashcard-item';
+import { FlashcardItemType } from '../../../services/flashcards/flashcard-item-type';
 
 @Component({
-  selector: 'app-flashcard-item',
-  templateUrl: './flashcard-item.component.html',
-  styleUrls: ['./flashcard-item.component.css']
+  selector: 'app-flashcard',
+  templateUrl: './flashcard.component.html'
 })
-export class FlashcardItemComponent implements OnInit {
+export class FlashcardComponent implements OnInit {
 
   @Input() item: FlashcardItem;
   type: FlashcardItemType;
@@ -17,11 +16,14 @@ export class FlashcardItemComponent implements OnInit {
 
   ngOnInit() {
     if (this.item.type === FlashcardItemType.Sound) {
+      this.checkSoundMediaSupported();
+    }
+  }
+
+  checkSoundMediaSupported() {
       // Create an audio element so we can use the canPlayType method
       const audio = document.createElement('audio');
       const result = audio.canPlayType(this.item.mediatype);
       this.mediatypeSupported = result !== '';
-    }
   }
-
 }

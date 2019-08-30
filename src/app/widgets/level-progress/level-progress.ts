@@ -1,4 +1,4 @@
-export class StudyLevel {
+export class LevelProgress {
   private currentLevel = 1;
   private step = 0;
 

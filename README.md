@@ -58,9 +58,13 @@ ng build --prod --base-href /temamemo --deploy-url /temamemo/
  * find a good typical topic (with "free" data)
 
 ## Releases
-v0.0.2
+
+v0.0.3 - Technical improvements
+* technical improvements
+
+v0.0.2 - Multimedia flashcards
 * small ui improvements
 * add flashcard with more advanced data (e.g. image)
 
-v0.0.1
+v0.0.1 - Prototype
 * basic prototype of the flashcard application

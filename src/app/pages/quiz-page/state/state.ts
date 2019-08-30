@@ -1,4 +1,4 @@
-export enum QuizState {
+export enum State {
   New = 'New',
   Ok = 'Ok',
   DoubleOk = 'DoubleOk',
