@@ -8,32 +8,37 @@
   </div>
 
   <div *ngIf="displayCongratulationAlert" class="alert alert-success" role="alert">
-      <i class="fas fa-trophy"></i>&nbsp;Congratulation!&nbsp;<i class="fas fa-trophy"></i><br>You have learned all the flashcards!<br>Please choose new topics to study.
-    </div>
+    <i class="fas fa-trophy"></i>&nbsp;Congratulation!&nbsp;<i class="fas fa-trophy"></i><br>You have learned all the
+    flashcards!<br>Please choose new topics to study.
+  </div>
 
   <div *ngIf="displayNothingToLearnAlert" class="alert alert-warning" role="alert">
     You already have learned all the flashcards! Please choose new topics to study.
   </div>
 
-  <div *ngIf="studyStarted" class="row">
-      <div class="col-sm">
-      </div>
-      <div class="col-sm-6">
-        <app-level-progress></app-level-progress>
-      </div>
-      <div class="col-sm">
-      </div>
-    </div>
+  <div *ngIf="notYetImplementedMessage" class="alert alert-warning" role="alert">
+    {{ notYetImplementedMessage }}
+  </div>
 
-    <div *ngIf="studyStarted" class="row mt-1">
-        <div class="col-sm">
-        </div>
-        <div class="col-sm-6">
-          <app-trophies-progress></app-trophies-progress>
-        </div>
-        <div class="col-sm">
-        </div>
-      </div>
+  <div *ngIf="studyStarted" class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <app-level-progress></app-level-progress>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div *ngIf="studyStarted" class="row mt-1">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <app-trophies-progress></app-trophies-progress>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
 
   <div class="row" [ngClass]="{'mt-3': studyStarted}">
     <div class="col-sm">
@@ -41,6 +46,36 @@
     <div class="col-sm-6">
       <button (click)="study()"
         class="btn btn-primary btn-lg btn-block">{{ studyStarted ? 'Continue study!': 'Start study!' }}</button>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <button (click)="chooseTopics()" class="btn btn-secondary btn-lg btn-block">Choose Topics</button>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <button (click)="editTopics()" class="btn btn-secondary btn-lg btn-block">Edit Topics</button>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <button (click)="showOptions()" class="btn btn-secondary btn-lg btn-block">Options</button>
     </div>
     <div class="col-sm">
     </div>

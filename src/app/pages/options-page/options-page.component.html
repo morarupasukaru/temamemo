@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <h1 class="text-center">Options</h1>
+
+  <div class="row mt-5">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+      <label>Language</label>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label *ngFor="let language of languages"
+            class="btn"
+            [ngClass]="{
+              'btn-secondary active': language.active,
+              'btn-outline-secondary': !language.active
+            }"
+            (click)="select(language)">
+            <input type="radio" name="options-language"
+              [id]="language.code" [checked]="language.active" autocomplete="off"> {{ language.description }}
+        </label>
+      </div>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm-6">
+        <button (click)="back()" class="btn btn-secondary btn-lg btn-block">Back</button>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>

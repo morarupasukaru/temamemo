@@ -10,6 +10,8 @@ import { TrophiesProgressComponent } from './widgets/trophies-progress/trophies-
 import { FlashcardComponent } from './pages/quiz-page/flashcard/flashcard.component';
 import { StateComponent } from './pages/quiz-page/state/state.component';
 import { StopwatchComponent } from './pages/quiz-page/stopwatch/stopwatch.component';
+import { OptionsPageComponent } from './pages/options-page/options-page.component';
+import { ChooseTopicsPageComponent } from './pages/choose-topics-page/choose-topics-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { StopwatchComponent } from './pages/quiz-page/stopwatch/stopwatch.compon
     TrophiesProgressComponent,
     FlashcardComponent,
     StateComponent,
-    StopwatchComponent
+    StopwatchComponent,
+    OptionsPageComponent,
+    ChooseTopicsPageComponent
   ],
   imports: [
     BrowserModule,

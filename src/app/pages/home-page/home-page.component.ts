@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
   hasToLearn = true;
   displayNothingToLearnAlert = false;
   displayCongratulationAlert = false;
+  notYetImplementedMessage: string;
 
   constructor(private levelProgressService: LevelProgressService, private quizService: QuizService, private router: Router) { }
 
@@ -37,5 +38,22 @@ export class HomePageComponent implements OnInit {
         this.displayNothingToLearnAlert = false;
       }, 5000);
     }
+  }
+
+  chooseTopics() {
+    // TODO decice when chooseTopics must be visible
+    // this.notYetImplementedMessage = '"Choose Topics" is not implemented yet';
+    this.router.navigate(['topics']);
+  }
+
+  editTopics() {
+    // TODO decice when editTopics must be visible
+    this.notYetImplementedMessage = '"Edit Topics" is not implemented yet';
+  }
+
+  showOptions() {
+    // TODO decice when showOptions must be visible
+    // this.notYetImplementedMessage = '"Show Options" is not implemented yet';
+    this.router.navigate(['options']);
   }
 }
