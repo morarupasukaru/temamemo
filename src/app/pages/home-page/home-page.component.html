@@ -16,10 +16,6 @@
     You already have learned all the flashcards! Please choose new topics to study.
   </div>
 
-  <div *ngIf="notYetImplementedMessage" class="alert alert-warning" role="alert">
-    {{ notYetImplementedMessage }}
-  </div>
-
   <div *ngIf="studyStarted" class="row">
     <div class="col-sm">
     </div>
@@ -56,16 +52,6 @@
     </div>
     <div class="col-sm-6">
       <button (click)="chooseTopics()" class="btn btn-secondary btn-lg btn-block">Choose Topics</button>
-    </div>
-    <div class="col-sm">
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col-sm">
-    </div>
-    <div class="col-sm-6">
-      <button (click)="editTopics()" class="btn btn-secondary btn-lg btn-block">Edit Topics</button>
     </div>
     <div class="col-sm">
     </div>

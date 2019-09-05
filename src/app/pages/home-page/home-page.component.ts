@@ -42,18 +42,11 @@ export class HomePageComponent implements OnInit {
 
   chooseTopics() {
     // TODO decice when chooseTopics must be visible
-    // this.notYetImplementedMessage = '"Choose Topics" is not implemented yet';
     this.router.navigate(['topics']);
-  }
-
-  editTopics() {
-    // TODO decice when editTopics must be visible
-    this.notYetImplementedMessage = '"Edit Topics" is not implemented yet';
   }
 
   showOptions() {
     // TODO decice when showOptions must be visible
-    // this.notYetImplementedMessage = '"Show Options" is not implemented yet';
     this.router.navigate(['options']);
   }
 }

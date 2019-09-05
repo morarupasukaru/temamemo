@@ -1,167 +1,46 @@
 <div class="container mt-3">
   <h1 class="text-center">Choose Topics</h1>
-
   <div class="row mt-5">
     <div class="col-sm">
     </div>
     <div class="col-sm-6">
-
       <ul class="list-group">
-        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"
-          style="cursor: pointer;">
-          <div class="d-flex w-100 justify-content-between">
+        <ng-template ngFor let-topic [ngForOf]="topics" let-i="index">
+          <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+            <div class="d-flex w-100 justify-content-between">
               <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                  <label class="custom-control-label" for="customSwitch1"></label>
-                  <span><i class="fas fa-chevron-down"></i>&nbsp;<b>German</b></span>
-                </div>
-                <div>
-
-                    <span class="badge badge-primary badge-pill">68</span>
-                    </div>
+                <input type="checkbox" class="custom-control-input"
+                  id="{{ topic.topic }}_{{ i }}"
+                  [checked]="topic.selected"
+                  (click)="toggleSelectAll(topic)">
+                <label class="custom-control-label" for="{{ topic.topic }}_{{ i }}"></label>
+                <!-- TODO animation without bootstrap javascript ? -->
+                <span (click)="topic.expand = !topic.expand" style="cursor: pointer;">
+                  <i class="fas fa-chevron-down" [ngClass]="{'fa-chevron-down': topic.expand,
+                        'fa-chevron-right': !topic.expand
+                      }"></i>&nbsp;<b>{{ topic.topic }}</b></span>
+              </div>
+              <div>
+                <span class="badge badge-primary badge-pill">{{ topic.flashcardsCount }}</span>
+              </div>
             </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Vocabulary Lesson 1 Listening</label>
-          </div>
-          <span class="badge badge-primary badge-pill">68</span>
-        </li>
-        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"
-          style="cursor: pointer;">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            <span><i class="fas fa-chevron-right"></i>&nbsp;<b>Japanese</b></span>
-          </div>
-          <span class="badge badge-primary badge-pill">172</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Hiragana to Rōmaji</label>
-          </div>
-          <span class="badge badge-primary badge-pill">46</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Katakana to Rōmaji</label>
-          </div>
-          <span class="badge badge-primary badge-pill">46</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Kanji 10 Kyuu</label>
-          </div>
-          <span class="badge badge-primary badge-pill">80</span>
-        </li>
-        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"
-          style="cursor: pointer;">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            <span><b>Geography</b></span>
-          </div>
-          <span class="badge badge-primary badge-pill">287</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Capitals</label>
-          </div>
-          <span class="badge badge-primary badge-pill">261</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Flags of Swiss Cantons</label>
-          </div>
-          <span class="badge badge-primary badge-pill">26</span>
-        </li>
-        <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center"
-          style="cursor: pointer;">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
-            <span><b>Math - Times table</b></span>
-          </div>
-          <span class="badge badge-primary badge-pill">100</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 1</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 2</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 3</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 4</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 5</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 6</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 7</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 8</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 9</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Times table of 10</label>
-          </div>
-          <span class="badge badge-primary badge-pill">10</span>
-        </li>
+          </li>
+          <ng-template [ngIf]="topic.expand">
+            <li *ngFor="let child of topic.childs; index as j"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="custom-control custom-switch">
+                <input type="checkbox"
+                  class="custom-control-input"
+                  id="{{ topic.topic }}_{{ i }}_{{ j }}"
+                  [checked]="child.selected"
+                  (click)="toggleSelect(child, topic)">
+                <label class="custom-control-label" for="{{ topic.topic }}_{{ i }}_{{ j }}">{{ child.topic }}</label>
+              </div>
+              <span class="badge badge-primary badge-pill">{{ child.flashcardsCount }}</span>
+            </li>
+          </ng-template>
+        </ng-template>
       </ul>
-
     </div>
     <div class="col-sm">
     </div>
@@ -171,7 +50,7 @@
     <div class="col-sm">
     </div>
     <div class="col-sm-6">
-      <button (click)="save()" class="btn btn-primary btn-lg btn-block">Save</button>
+      <button (click)="apply()" class="btn btn-primary btn-lg btn-block">Apply</button>
     </div>
     <div class="col-sm">
     </div>
