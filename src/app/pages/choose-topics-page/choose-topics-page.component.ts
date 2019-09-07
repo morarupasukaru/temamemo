@@ -19,6 +19,7 @@ interface ParentTopic {
 export class ChooseTopicsPageComponent implements OnInit {
 
   topics: ParentTopic[];
+  downloading = false;
 
   constructor(private router: Router, private topicsService: TopicsService) { }
 
@@ -78,9 +79,13 @@ export class ChooseTopicsPageComponent implements OnInit {
     }
   }
 
-  apply() {
-    // TODO download new topics (if needed) and display progress bar
-    this.router.navigate(['']);
+  download() {
+    // TODO replace with http call (maybe encapsulated into topics or FlashcardService)
+    this.downloading = true;
+    setTimeout(() => {
+      this.downloading = false;
+      this.router.navigate(['']);
+    }, 5000);
   }
 
   back() {
